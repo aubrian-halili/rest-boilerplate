@@ -12,14 +12,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// catch 404 and forward to error handler
+// Catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
 });
 
-// error handler
+// Error handler
 app.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
-  res.status(err.status || 500);
   res.status(err.status || 500).json({ error: err.message });
 });
 
