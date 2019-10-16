@@ -1,5 +1,5 @@
 const _ = require('lodash');
-const debug = require('debug')('email:server');
+const debug = require('debug')('server');
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10);
@@ -35,18 +35,18 @@ const onError = (port) => {
   };
 };
 
-const onListening = (server) => {
+const listening = (server) => {
   return () => {
     const addr = server.address();
     const bind = typeof addr === 'string'
       ? `pipe ${addr}`
       : `port ${addr.port}`;
-    console.log(`Listening on ${bind}`);
+    debug(`Listening on ${bind}`);
   };
 };
 
 module.exports = {
   normalizePort,
   onError,
-  onListening,
+  listening,
 };
